@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  .container
+    h1.text-center= title
+    .row
+      .col-md-6.col-md-offset-3
+        form(action='/login' method="POST")
+          label(for='email') Email:
+          input.form-control(type='email' id='email' name='email' required)
+          label(for='password') Password:
+          input.form-control(type='password' id='password' name='password' required)
+          input.btn-info(type='submit' value='Login')
