@@ -5,6 +5,7 @@ block content
     h1.text-center= title
     .row
       .col-md-6.col-md-offset-3
+        include errors.jade
         form(action='/register' method="POST")
           label(for='username') Username:
           input.form-control(type='text' id='username' name='username' required)

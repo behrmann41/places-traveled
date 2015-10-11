@@ -5,6 +5,7 @@ block content
     h1.text-center= title
     .row
       .col-md-6.col-md-offset-3
+        include errors.jade
         form(action='/login' method="POST")
           label(for='email') Email:
           input.form-control(type='email' id='email' name='email' required)
