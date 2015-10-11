@@ -3,3 +3,14 @@ extends ../layout
 block content
   .container
     h1= title
+    hr
+    .row
+      .col-md-4
+        form(action='/places' method='POST')
+          label(for='address') Address:
+          input.form-control(type='text' id='address' name='address' required)
+          label(for='latitude') Latitude:
+          input.form-control(type='text' id='latitude' name='latitude' required)
+          label(for='longitude') Longitude:
+          input.form-control(type='text' id='longitude' name='longitude' required)
+          input.btn-primary(type='submit' id='addplace' value='Add Place')
