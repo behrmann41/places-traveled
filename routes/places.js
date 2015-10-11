@@ -7,12 +7,15 @@ var Places = db.get('places')
 router.get('/', function (req, res, next){
   Places.find({}, function (err, places){
     var username = req.session.user
-    res.render('users/places', {  title: "Places I've Been", user: username })
+    res.render('users/places', {  title: "Places I've Been", 
+                                  user: username,
+                                  allPlaces: places
+                                })
   })
 })
 
 router.post('/', function (req, res, next){
-  Places.insert({}, function (err, place){
+  Places.insert(req.body, function (err, place){
     console.log(place)
   })
 })

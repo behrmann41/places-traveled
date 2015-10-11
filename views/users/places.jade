@@ -4,8 +4,24 @@ block content
   .container
     h1= title
     hr
+    h4 List of Places
+      if (allPlaces.length)
+        table.table.table-striped.table-bordered
+          thead
+            tr
+              th Address
+              th Latitude
+              th Longitude
+          tbody
+            for place in allPlaces
+              tr
+                td= place.address
+                td= place.latitude
+                td= place.longitude
+    hr
     .row
       .col-md-4
+        h4 Add a new place
         form(action='/places' method='POST')
           label(for='address') Address:
           input.form-control(type='text' id='address' name='address' required)
