@@ -11,11 +11,13 @@ block content
               th Address
               th Latitude
               th Longitude
+              th Delete
           tbody(id='tbody')
     hr
+    h4 Add a new place
+      small (Leave Latitude &amp Longitude Blank to Auto-Discover)
     .row
       .col-md-4
-        h4 Add a new place
         form(action='/places' method='POST')
           label(for='address') Address:
           input.form-control(type='text' id='address' name='address' placeholder='example: Paris, France' required)

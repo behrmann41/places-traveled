@@ -41,4 +41,8 @@ router.post('/', function (req, res, next){
   }
 })
 
+router.delete('/delete', function (req, res, next){
+  console.log('successful delete')
+})
+
 module.exports = router;

@@ -4,7 +4,7 @@ $(document).ready(function(){
         var addr = data[i].address
         var lat = data[i].latitude
         var lon = data[i].longitude
-        $('#tbody').append('<tr><td>' + addr + '</td><td>' + lat + '</td><td>' + lon + '</td></tr>')
+        $('#tbody').append('<tr><td>' + addr + '</td><td>' + lat + '</td><td>' + lon + '</td><td><button class="delete">X</button></td></tr>')
       }
   })
 
@@ -20,7 +20,7 @@ $(document).ready(function(){
       dataType: 'JSON',
       data: newPlace,
       success: function (data){
-        $('#tbody').append('<tr><td>' + data.address + '</td><td>' + data.latitude + '</td><td>' + data.longitude + '</td></tr>')
+        $('#tbody').append('<tr><td>' + data.address + '</td><td>' + data.latitude + '</td><td>' + data.longitude + '</td><td><button class="delete">X</button></td></tr>')
         console.log(data)
       },
       error: function (error){
@@ -28,4 +28,22 @@ $(document).ready(function(){
       }
     })
   })
+
+  $('tbody').on('click', 'td button', function (){
+    var address = $
+    var delconfirm = confirm('Do you wish to delete this location?')
+    if (delconfirm === true){
+      $.ajax({
+        type: 'DELETE',
+        url: '/delete',
+        success: function (data){
+          console.log(data)
+        },
+        error: function (error){
+          console.log('error', error)
+        }
+      })
+    }
+  })
+
 })
