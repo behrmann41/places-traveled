@@ -10,6 +10,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var places = require('./routes/places');
 
+require('dotenv').load()
+
 var app = express();
 
 // view engine setup
