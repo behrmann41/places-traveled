@@ -12,12 +12,7 @@ block content
               th Address
               th Latitude
               th Longitude
-          tbody
-            for place in allPlaces
-              tr
-                td= place.address
-                td= place.latitude
-                td= place.longitude
+          tbody(id='tbody')
     hr
     .row
       .col-md-4

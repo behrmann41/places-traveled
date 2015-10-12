@@ -11,12 +11,20 @@ router.get('/', function (req, res, next){
                                   user: username,
                                   allPlaces: places
                                 })
+
+  })
+})
+
+router.get('/data', function (req, res, next){
+  Places.find({}, function (err, places){
+    res.json(places)
   })
 })
 
 router.post('/', function (req, res, next){
   Places.insert(req.body, function (err, place){
-    console.log(place)
+    console.log('Successful Post')
+    res.json(place)
   })
 })
 
