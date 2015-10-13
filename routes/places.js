@@ -44,7 +44,7 @@ router.post('/', function (req, res, next){
 router.delete('/:id', function (req, res, next){
   var place = req.params.id
   Places.remove({_id: place}, function (err, data){
-    res.redirect('/places/data')
+    res.json({message:'success'})
   })
 })
 

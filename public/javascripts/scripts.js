@@ -1,13 +1,16 @@
 $(document).ready(function(){
-  $.getJSON('/places/data', function (data){
-      for (var i = 0; i < data.length; i++){
-        var addr = data[i].address
-        var lat = data[i].latitude
-        var lon = data[i].longitude
-        var placeId = data[i]._id
-        $('#tbody').append('<tr><td>' + addr + '</td><td>' + lat + '</td><td>' + lon + '</td><td><button class="delete" rel="'+ placeId +'">X</button></td></tr>')
-      }
-  })
+  function loadPlaces() {
+    $.getJSON('/places/data', function (data){
+        $('#tbody').html('');
+        for (var i = 0; i < data.length; i++){
+          var addr = data[i].address
+          var lat = data[i].latitude
+          var lon = data[i].longitude
+          var placeId = data[i]._id
+          $('#tbody').append('<tr><td>' + addr + '</td><td>' + lat + '</td><td>' + lon + '</td><td><button class="delete" rel="'+ placeId +'">X</button></td></tr>')
+        }
+    })
+  }
 
   $('#addplace').on('click', function(){
     event.preventDefault();
@@ -21,8 +24,7 @@ $(document).ready(function(){
       dataType: 'JSON',
       data: newPlace,
       success: function (data){
-        $('#tbody').append('<tr><td>' + data.address + '</td><td>' + data.latitude + '</td><td>' + data.longitude + '</td><td><button class="delete">X</button></td></tr>')
-        console.log(data)
+        $('#tbody').append('<tr><td>' + data.address + '</td><td>' + data.latitude + '</td><td>' + data.longitude + '</td><td><button class="delete" rel="'+ data._id +'">X</button></td></tr>')
       },
       error: function (error){
         console.log('error', error)
@@ -40,6 +42,7 @@ $(document).ready(function(){
         url: '/places/' + place.attr('rel'),
         success: function (data){
           console.log(data)
+          loadPlaces()
         },
         error: function (error){
           console.log('error', error)
@@ -56,5 +59,6 @@ $(document).ready(function(){
       zoom: 8
     });
   }
-    initMap()
+  loadPlaces()
+  initMap()
 })
