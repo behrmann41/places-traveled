@@ -17,3 +17,7 @@ a {
 table {
   margin-top: 15px;
 }
+
+#map {
+  height: 500px;
+}
