@@ -6,12 +6,10 @@ var Places = db.get('places')
 var unirest = require('unirest');
 
 router.get('/', function (req, res, next){
-  Places.find({}, function (err, places){
     var username = req.session.user
     res.render('users/places', {  title: "Places I've Been", 
                                   user: username
                                 })
-  })
 })
 
 router.get('/data', function (req, res, next){
